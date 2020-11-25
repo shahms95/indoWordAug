@@ -24,7 +24,7 @@ public class Examples {
 
 		BufferedReader inputWordsFile = null;
 		try {
-			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("inputwords.txt"), "UTF8"));
+			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/dev_test/inputwords.txt"), "UTF8"));
 		} catch( FileNotFoundException e){
 			System.err.println("Error opening input words file.");
 			System.exit(-1);
@@ -36,38 +36,27 @@ public class Examples {
 		
 		String inputLine;
 		long[] synsetOffsets;
-		
+		int counter = 5;
 		try {
-			while((inputLine = inputWordsFile.readLine()) != null){
+			while(counter > 0 ||((inputLine = inputWordsFile.readLine()) != null)){
 				System.out.println("\n" + inputLine);
 				//	 Look up the word for all POS tags
-				IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(inputLine.trim());				
+				String[] words = inputLine.split();
+				IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[0].trim());				
 				//	 Note: Use lookupAllMorphedIndexWords() to look up morphed form of the input word for all POS tags				
 				IndexWord[] demoIndexWord = new IndexWord[demoIWSet.size()];
 				demoIndexWord  = demoIWSet.getIndexWordArray();
 				for ( int i = 0;i < demoIndexWord.length;i++ ) {
 					int size = demoIndexWord[i].getSenseCount();
 					System.out.println("Sense Count is " + size);	
-					// synsetOffsets = demoIndexWord[i].getSynsetOffsets();
-					// for ( int k = 0 ;k < size; k++ ) {
-					// 	System.out.println("Offsets[" + k +"] " + synsetOffsets[k]);	
-					// }
 
 					Synset[] synsetArray = demoIndexWord[i].getSenses(); 
 					for ( int k = 0;k < size;k++ ) {
 						System.out.println("Synset [" + k +"] "+ synsetArray[k]);
-						// System.out.println("Synset POS: " + synsetArray[k].getPOS());
-						// Pointer[] pointers = synsetArray[k].getPointers();
-						// System.out.println("Synset Num Pointers:" + pointers.length);
-						// for (int j = 0; j < pointers.length; j++) {							
-						// 	if(pointers[j].getType().equals(PointerType.ONTO_NODES)) {	// For ontology relation
-						// 		System.out.println(pointers[j].getType() + " : "  + Dictionary.getInstance().getOntoSynset(pointers[j].getOntoPointer()).getOntoNodes());
-						// 	} else {
-						// 		System.out.println(pointers[j].getType() + " : "  + pointers[j].getTargetSynset());
-						// 	}							
-						// }
+						}
 						
 					}
+					counter--;
 				}
 				
 			}
