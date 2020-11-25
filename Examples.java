@@ -48,24 +48,24 @@ public class Examples {
 				for ( int i = 0;i < demoIndexWord.length;i++ ) {
 					int size = demoIndexWord[i].getSenseCount();
 					System.out.println("Sense Count is " + size);	
-					synsetOffsets = demoIndexWord[i].getSynsetOffsets();
-					for ( int k = 0 ;k < size; k++ ) {
-						System.out.println("Offsets[" + k +"] " + synsetOffsets[k]);	
-					}
+					// synsetOffsets = demoIndexWord[i].getSynsetOffsets();
+					// for ( int k = 0 ;k < size; k++ ) {
+					// 	System.out.println("Offsets[" + k +"] " + synsetOffsets[k]);	
+					// }
 
 					Synset[] synsetArray = demoIndexWord[i].getSenses(); 
 					for ( int k = 0;k < size;k++ ) {
 						System.out.println("Synset [" + k +"] "+ synsetArray[k]);
-						System.out.println("Synset POS: " + synsetArray[k].getPOS());
-						Pointer[] pointers = synsetArray[k].getPointers();
-						System.out.println("Synset Num Pointers:" + pointers.length);
-						for (int j = 0; j < pointers.length; j++) {							
-							if(pointers[j].getType().equals(PointerType.ONTO_NODES)) {	// For ontology relation
-								System.out.println(pointers[j].getType() + " : "  + Dictionary.getInstance().getOntoSynset(pointers[j].getOntoPointer()).getOntoNodes());
-							} else {
-								System.out.println(pointers[j].getType() + " : "  + pointers[j].getTargetSynset());
-							}							
-						}
+						// System.out.println("Synset POS: " + synsetArray[k].getPOS());
+						// Pointer[] pointers = synsetArray[k].getPointers();
+						// System.out.println("Synset Num Pointers:" + pointers.length);
+						// for (int j = 0; j < pointers.length; j++) {							
+						// 	if(pointers[j].getType().equals(PointerType.ONTO_NODES)) {	// For ontology relation
+						// 		System.out.println(pointers[j].getType() + " : "  + Dictionary.getInstance().getOntoSynset(pointers[j].getOntoPointer()).getOntoNodes());
+						// 	} else {
+						// 		System.out.println(pointers[j].getType() + " : "  + pointers[j].getTargetSynset());
+						// 	}							
+						// }
 						
 					}
 				}
