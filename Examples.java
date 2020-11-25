@@ -53,13 +53,12 @@ public class Examples {
 					Synset[] synsetArray = demoIndexWord[i].getSenses(); 
 					for ( int k = 0;k < size;k++ ) {
 						System.out.println("Synset [" + k +"] "+ synsetArray[k]);
-						}
-						
 					}
-					counter--;
+						
 				}
-				
+					counter--;
 			}
+				
 		} catch (IOException e) {
 			System.err.println("Error in input/output.");			
 			e.printStackTrace();
