@@ -13,6 +13,7 @@ import in.ac.iitb.cfilt.jhwnl.dictionary.Dictionary;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,6 +28,7 @@ public class Examples {
 	static void demonstration() {
 
 		BufferedReader inputWordsFile = null;
+		FileWriter myWriter = null;
 		ArrayList<String> validPOS = new ArrayList();
 		validPOS.add("NOUN");
 		validPOS.add("VERB");
@@ -36,6 +38,7 @@ public class Examples {
 		Random rand = new Random();
 		try {
 			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/dev_test/dev.hi"), "UTF8"));
+			myWriter = new FileWriter("../hi-en/dev_test/dev-SR-aug.hi");
 		} catch( FileNotFoundException e){
 			System.err.println("Error opening input words file.");
 			System.exit(-1);
@@ -78,7 +81,7 @@ public class Examples {
 						for ( int k = 0;k < size;k++ ) {
 							// System.out.println("Synset [" + k +"] "+ synsetArray[k]);
 							if(validPOS.contains(synsetArray[k].getPOS().toString())){
-								for(int synsetIndex = 1; synsetIndex <= synsetArray[k].getWordsSize(); synsetIndex++){
+								for(int synsetIndex = 1; synsetIndex <= Math.min(3,synsetArray[k].getWordsSize()); synsetIndex++){
 									words[replaceIndex] = synsetArray[k].getWord(synsetIndex).toString();
 									StringBuilder builder = new StringBuilder();
 									builder.append(lineCount);
@@ -87,7 +90,8 @@ public class Examples {
 										builder.append(s+ ' ');
 									}
 									String changedLine = builder.toString().trim();
-									System.out.println("Changed line " + changedLine);
+									// System.out.println("Changed line " + changedLine);
+									myWriter.write(changedLine);
 								}
 							}
 							else{
@@ -110,6 +114,7 @@ public class Examples {
 			System.err.println("Internal Error raised from API.");
 			e.printStackTrace();
 		} 
+		myWriter.close();
 	}
 	
 	public static void main(String args[]) throws Exception {
