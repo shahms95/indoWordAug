@@ -18,11 +18,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
+import java.util.Random;
+
 public class Examples {
 	
 	static void demonstration() {
 
 		BufferedReader inputWordsFile = null;
+		ArrayList<String> validPOS = new ArrayList();
+		validPOS.add("NOUN");
+		validPOS.add("VERB");
+		validPOS.add("ADVERB");
+		validPOS.add("ADJECTIVE");
+
+		Random rand = new Random();
 		try {
 			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/dev_test/dev.hi"), "UTF8"));
 		} catch( FileNotFoundException e){
@@ -37,27 +46,52 @@ public class Examples {
 		String inputLine;
 		long[] synsetOffsets;
 		int counter = 5;
+		int lineCount = 0;
 		try {
 			while(counter > 0 && ((inputLine = inputWordsFile.readLine()) != null)){
 				System.out.println("\n" + inputLine);
 				String[] words = inputLine.split("\\s+");
 				//	 Look up the word for all POS tags
-				IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[0].trim());
-				//	 Note: Use lookupAllMorphedIndexWords() to look up morphed form of the input word for all POS tags				
-				IndexWord[] demoIndexWord = new IndexWord[demoIWSet.size()];
-				demoIndexWord  = demoIWSet.getIndexWordArray();
-				for ( int i = 0;i < demoIndexWord.length;i++ ) {
-					int size = demoIndexWord[i].getSenseCount();
-					System.out.println("Sense Count is " + size);	
 
-					Synset[] synsetArray = demoIndexWord[i].getSenses(); 
-					for ( int k = 0;k < size;k++ ) {
-						System.out.println("Synset [" + k +"] "+ synsetArray[k]);
-						System.out.println("SynsetPOS [" + k +"] "+ synsetArray[k].getPOS());
-					}
-						
+				int numWords = words.length;
+				int numReplacedWords = min(1, 0.15*numWords);
+				int[] replaceIndexes = new int[numReplacedWords];
+				for(int i=0; i<numReplacedWords; i++){
+					replaceIndexes[i] = rand.nextInt(numWords);
 				}
-					counter--;
+
+				for(int replaceIndex: replaceIndexes){
+					String originalWord = words[replaceIndex];
+					IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[replaceIndex].trim());
+					//	 Note: Use lookupAllMorphedIndexWords() to look up morphed form of the input word for all POS tags				
+					IndexWord[] demoIndexWord = new IndexWord[demoIWSet.size()];
+					demoIndexWord  = demoIWSet.getIndexWordArray();
+					for (int i = 0; i < demoIndexWord.length; i++) {
+						int size = demoIndexWord[i].getSenseCount();
+						System.out.println("Sense Count is " + size);	
+
+						Synset[] synsetArray = demoIndexWord[i].getSenses(); 
+						for ( int k = 0;k < size;k++ ) {
+							// System.out.println("Synset [" + k +"] "+ synsetArray[k]);
+							if(validPOS.contains(synsetArray[k].getPOS())){
+								words[replaceIndex] = synsetArray[k];
+								StringBuilder builder = new StringBuilder();
+								builder.append(lineCount);
+								builder.append("::");
+								for(String s: words){
+									builder.append(s+ ' ');
+								}
+								String changedLine = builder.toString().trim();
+								System.out.println("Changed line " + changedLine);
+							}
+
+							// System.out.println("SynsetPOS [" + k +"] "+ synsetArray[k].getPOS());
+						}							
+					}
+					words[replaceIndex] = originalWord;
+				}
+				counter--;
+				lineCount++;	
 			}
 				
 		} catch (IOException e) {
