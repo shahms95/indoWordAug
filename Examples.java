@@ -41,7 +41,7 @@ public class Examples {
 			while(counter > 0 ||((inputLine = inputWordsFile.readLine()) != null)){
 				System.out.println("\n" + inputLine);
 				//	 Look up the word for all POS tags
-				String[] words = inputLine.split();
+				String[] words = inputLine.split("\\s+");
 				IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[0].trim());				
 				//	 Note: Use lookupAllMorphedIndexWords() to look up morphed form of the input word for all POS tags				
 				IndexWord[] demoIndexWord = new IndexWord[demoIWSet.size()];
