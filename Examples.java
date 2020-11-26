@@ -24,7 +24,7 @@ public class Examples {
 
 		BufferedReader inputWordsFile = null;
 		try {
-			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/dev_test/inputwords.txt"), "UTF8"));
+			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/dev_test/dev.hi"), "UTF8"));
 		} catch( FileNotFoundException e){
 			System.err.println("Error opening input words file.");
 			System.exit(-1);
