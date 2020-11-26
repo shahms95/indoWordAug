@@ -56,7 +56,7 @@ public class Examples {
 				//	 Look up the word for all POS tags
 
 				int numWords = words.length;
-				int numReplacedWords = Math.min(1, 0.15*numWords);
+				int numReplacedWords = Math.min(1.0, 0.15*numWords);
 				int[] replaceIndexes = new int[numReplacedWords];
 				for(int i=0; i<numReplacedWords; i++){
 					replaceIndexes[i] = rand.nextInt(numWords);
@@ -77,7 +77,7 @@ public class Examples {
 							// System.out.println("Synset [" + k +"] "+ synsetArray[k]);
 							if(validPOS.contains(synsetArray[k].getPOS())){
 								for(int synsetIndex = 1; synsetIndex <= synsetArray[k].getWordsSize(); synsetIndex++){
-									words[replaceIndex] = synsetArray[k].getWord(synsetIndex);
+									words[replaceIndex] = synsetArray[k].getWord(synsetIndex).toString();
 									StringBuilder builder = new StringBuilder();
 									builder.append(lineCount);
 									builder.append("::");
