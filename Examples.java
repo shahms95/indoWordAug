@@ -36,13 +36,13 @@ public class Examples {
 		
 		String inputLine;
 		long[] synsetOffsets;
-		int counter = 10;
+		int counter = 5;
 		try {
 			while(counter > 0 && ((inputLine = inputWordsFile.readLine()) != null)){
 				System.out.println("\n" + inputLine);
 				String[] words = inputLine.split("\\s+");
 				//	 Look up the word for all POS tags
-				IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[0].trim());				
+				IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[0].trim());
 				//	 Note: Use lookupAllMorphedIndexWords() to look up morphed form of the input word for all POS tags				
 				IndexWord[] demoIndexWord = new IndexWord[demoIWSet.size()];
 				demoIndexWord  = demoIWSet.getIndexWordArray();
@@ -53,6 +53,7 @@ public class Examples {
 					Synset[] synsetArray = demoIndexWord[i].getSenses(); 
 					for ( int k = 0;k < size;k++ ) {
 						System.out.println("Synset [" + k +"] "+ synsetArray[k]);
+						System.out.println("SynsetPOS [" + k +"] "+ synsetArray[k].getPOS());
 					}
 						
 				}
