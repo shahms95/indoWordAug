@@ -45,6 +45,8 @@ public class Examples {
 		} catch (UnsupportedEncodingException e) {
 			System.err.println("UTF-8 encoding is not supported.");
 			System.exit(-1);
+		} catch (IOException e){
+			System.err.println("IOException in creating output file");
 		}
 		JHWNL.initialize();
 		
@@ -114,7 +116,13 @@ public class Examples {
 			System.err.println("Internal Error raised from API.");
 			e.printStackTrace();
 		} 
-		myWriter.close();
+		finally{
+			try{
+				myWriter.close();
+			} catch (IOException e){
+			System.err.println("IOException in creating output file");
+			}
+		}
 	}
 	
 	public static void main(String args[]) throws Exception {
