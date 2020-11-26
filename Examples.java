@@ -77,7 +77,7 @@ public class Examples {
 						Synset[] synsetArray = demoIndexWord[i].getSenses(); 
 						for ( int k = 0;k < size;k++ ) {
 							// System.out.println("Synset [" + k +"] "+ synsetArray[k]);
-							if(validPOS.contains(synsetArray[k].getPOS())){
+							if(validPOS.contains(synsetArray[k].getPOS().toString())){
 								for(int synsetIndex = 1; synsetIndex <= synsetArray[k].getWordsSize(); synsetIndex++){
 									words[replaceIndex] = synsetArray[k].getWord(synsetIndex).toString();
 									StringBuilder builder = new StringBuilder();
