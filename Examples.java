@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 import java.util.Random;
+import java.util.ArrayList;
+import java.lang.*;
 
 public class Examples {
 	
@@ -54,7 +56,7 @@ public class Examples {
 				//	 Look up the word for all POS tags
 
 				int numWords = words.length;
-				int numReplacedWords = min(1, 0.15*numWords);
+				int numReplacedWords = Math.min(1, 0.15*numWords);
 				int[] replaceIndexes = new int[numReplacedWords];
 				for(int i=0; i<numReplacedWords; i++){
 					replaceIndexes[i] = rand.nextInt(numWords);
@@ -74,15 +76,17 @@ public class Examples {
 						for ( int k = 0;k < size;k++ ) {
 							// System.out.println("Synset [" + k +"] "+ synsetArray[k]);
 							if(validPOS.contains(synsetArray[k].getPOS())){
-								words[replaceIndex] = synsetArray[k];
-								StringBuilder builder = new StringBuilder();
-								builder.append(lineCount);
-								builder.append("::");
-								for(String s: words){
-									builder.append(s+ ' ');
+								for(int synsetIndex = 1; synsetIndex <= synsetArray[k].getWordsSize(); synsetIndex++){
+									words[replaceIndex] = synsetArray[k].getWord(synsetIndex);
+									StringBuilder builder = new StringBuilder();
+									builder.append(lineCount);
+									builder.append("::");
+									for(String s: words){
+										builder.append(s+ ' ');
+									}
+									String changedLine = builder.toString().trim();
+									System.out.println("Changed line " + changedLine);
 								}
-								String changedLine = builder.toString().trim();
-								System.out.println("Changed line " + changedLine);
 							}
 
 							// System.out.println("SynsetPOS [" + k +"] "+ synsetArray[k].getPOS());
