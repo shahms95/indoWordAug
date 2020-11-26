@@ -38,7 +38,7 @@ public class Examples {
 		long[] synsetOffsets;
 		int counter = 5;
 		try {
-			while(counter > 0 ||((inputLine = inputWordsFile.readLine()) != null)){
+			while(counter > 0 and ((inputLine = inputWordsFile.readLine()) != null)){
 				System.out.println("\n" + inputLine);
 				//	 Look up the word for all POS tags
 				String[] words = inputLine.split("\\s+");
