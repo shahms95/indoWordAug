@@ -56,7 +56,7 @@ public class Examples {
 				//	 Look up the word for all POS tags
 
 				int numWords = words.length;
-				int numReplacedWords = Math.min(1.0, 0.15*numWords);
+				int numReplacedWords = Math.max(1.0, 0.15*numWords);
 				int[] replaceIndexes = new int[numReplacedWords];
 				for(int i=0; i<numReplacedWords; i++){
 					replaceIndexes[i] = rand.nextInt(numWords);
