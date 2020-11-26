@@ -90,6 +90,9 @@ public class Examples {
 									System.out.println("Changed line " + changedLine);
 								}
 							}
+							else{
+								System.out.println("Invalid POS");
+							}
 
 							// System.out.println("SynsetPOS [" + k +"] "+ synsetArray[k].getPOS());
 						}							
