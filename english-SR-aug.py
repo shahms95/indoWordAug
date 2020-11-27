@@ -1,16 +1,16 @@
 from nltk.corpus import wordnet as wn
 from random import randint
 
-# inputFile = "../hi-en/parallel/IITB.en-hi.100k.en"
-# outputFile = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.en"
 
 debug = True
 def printd(lines):
 	if debug:
 		print(lines)
 
-inputFile = "../hi-en/dev_test/dev.en"
-outputFileName = "../hi-en/dev_test/dev-SR-aug.en"
+inputFile = "../hi-en/parallel/IITB.en-hi.100k.en"
+outputFile = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.en"
+# inputFile = "../hi-en/dev_test/dev.en"
+# outputFileName = "../hi-en/dev_test/dev-SR-aug.en"
 outputFile = open(outputFileName, 'w')
 
 with open(inputFile,'r') as f:
