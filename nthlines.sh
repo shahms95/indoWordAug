@@ -1,3 +1,3 @@
 # first argument is filename; ct is nth line
-ct=16
-awk -v patt="$ct" 'NR % patt' $1
+ct=2
+awk -v patt="$2" 'NR % patt == 0' $1
