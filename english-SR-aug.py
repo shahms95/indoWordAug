@@ -22,11 +22,12 @@ for inputLine in lines:
 	# if (debug and counter<0):
 	# 	break
 	# counter = counter - 1
-	outputFile.write(str(linecount) + "::" + inputLine)
 	words = inputLine.split()
 	numWords = len(words)
 	if numWords <1:
 		continue
+
+	outputFile.write(str(linecount) + "::" + inputLine)
 	numReplacedWords = int(max(1,0.15*numWords))
 	printd("Num replaced words: {}".format(numReplacedWords))
 	replaceIndexes = []
