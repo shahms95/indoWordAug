@@ -52,11 +52,12 @@ public class Examples {
 		
 		String inputLine;
 		long[] synsetOffsets;
-		int counter = 5;
+		// int counter = 5;
 		int lineCount = 0;
 		try {
-			while(counter > 0 && ((inputLine = inputWordsFile.readLine()) != null)){
+			while( ((inputLine = inputWordsFile.readLine()) != null)){
 				System.out.println("\n" + inputLine);
+				myWriter.write(String.valueOf(lineCount)+"::"+inputLine+'\n');
 				String[] words = inputLine.split("\\s+");
 				//	 Look up the word for all POS tags
 
@@ -93,7 +94,7 @@ public class Examples {
 									}
 									String changedLine = builder.toString().trim();
 									// System.out.println("Changed line " + changedLine);
-									myWriter.write(changedLine);
+									myWriter.write(changedLine+'\n');
 								}
 							}
 							else{
@@ -105,7 +106,7 @@ public class Examples {
 					}
 					words[replaceIndex] = originalWord;
 				}
-				counter--;
+				// counter--;
 				lineCount++;	
 			}
 				
