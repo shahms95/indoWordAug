@@ -62,6 +62,8 @@ public class Examples {
 				//	 Look up the word for all POS tags
 
 				int numWords = words.length;
+				if(numWords<1):
+					continue;
 				int numReplacedWords = (int)Math.max(1.0, 0.15*numWords);
 				// System.out.println("Number of replaced words: " + String.valueOf(numReplacedWords));
 				int[] replaceIndexes = new int[numReplacedWords];
