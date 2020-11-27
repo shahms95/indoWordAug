@@ -56,14 +56,14 @@ public class Examples {
 		int lineCount = 0;
 		try {
 			while( ((inputLine = inputWordsFile.readLine()) != null)){
-				System.out.println("\n" + inputLine);
+				// System.out.println("\n" + inputLine);
 				myWriter.write(String.valueOf(lineCount)+"::"+inputLine+'\n');
 				String[] words = inputLine.split("\\s+");
 				//	 Look up the word for all POS tags
 
 				int numWords = words.length;
 				int numReplacedWords = (int)Math.max(1.0, 0.15*numWords);
-				System.out.println("Number of replaced words: " + String.valueOf(numReplacedWords));
+				// System.out.println("Number of replaced words: " + String.valueOf(numReplacedWords));
 				int[] replaceIndexes = new int[numReplacedWords];
 				for(int i=0; i<numReplacedWords; i++){
 					replaceIndexes[i] = rand.nextInt(numWords);
@@ -71,14 +71,14 @@ public class Examples {
 
 				for(int replaceIndex: replaceIndexes){
 					String originalWord = words[replaceIndex];
-					System.out.println("Word being replaced: " + originalWord + " from index " + String.valueOf(replaceIndex));
+					// System.out.println("Word being replaced: " + originalWord + " from index " + String.valueOf(replaceIndex));
 					IndexWordSet demoIWSet = Dictionary.getInstance().lookupAllIndexWords(words[replaceIndex].trim());
 					//	 Note: Use lookupAllMorphedIndexWords() to look up morphed form of the input word for all POS tags				
 					IndexWord[] demoIndexWord = new IndexWord[demoIWSet.size()];
 					demoIndexWord  = demoIWSet.getIndexWordArray();
 					for (int i = 0; i < demoIndexWord.length; i++) {
 						int size = demoIndexWord[i].getSenseCount();
-						System.out.println("Sense Count is " + size);	
+						// System.out.println("Sense Count is " + size);	
 
 						Synset[] synsetArray = demoIndexWord[i].getSenses(); 
 						for ( int k = 0;k < size;k++ ) {
