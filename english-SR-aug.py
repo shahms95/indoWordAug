@@ -2,7 +2,7 @@ from nltk.corpus import wordnet as wn
 from random import randint
 
 
-debug = True
+debug = False
 def printd(lines):
 	if debug:
 		print(lines)
@@ -19,7 +19,7 @@ with open(inputFile,'r') as f:
 counter = 5
 linecount = 0
 for inputLine in lines:
-	if counter<0:
+	if debug && counter<0:
 		break
 	counter = counter - 1
 	outputFile.write(str(linecount) + "::" + inputLine)
