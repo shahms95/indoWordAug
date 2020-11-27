@@ -8,7 +8,7 @@ def printd(lines):
 		print(lines)
 
 inputFile = "../hi-en/parallel/IITB.en-hi.100k.en"
-outputFile = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.en"
+outputFileName = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.en"
 # inputFile = "../hi-en/dev_test/dev.en"
 # outputFileName = "../hi-en/dev_test/dev-SR-aug.en"
 outputFile = open(outputFileName, 'w')
