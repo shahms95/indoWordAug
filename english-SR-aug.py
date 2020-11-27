@@ -2,7 +2,7 @@ from nltk.corpus import wordnet as wn
 from random import randint
 
 
-debug = True
+debug = False
 def printd(lines):
 	if debug:
 		print(lines)
