@@ -29,7 +29,7 @@ for inputLine in lines:
 	printd("Num replaced words: {}".format(numReplacedWords))
 	replaceIndexes = []
 	for x in range(numReplacedWords):
-		replaceIndexes.append(randint(0,numReplacedWords-1))
+		replaceIndexes.append(randint(0,numWords-1))
 
 	for replaceIndex in replaceIndexes:
 		originalWord = words[replaceIndex]
