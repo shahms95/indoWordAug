@@ -25,6 +25,8 @@ for inputLine in lines:
 	outputFile.write(str(linecount) + "::" + inputLine)
 	words = inputLine.split()
 	numWords = len(words)
+	if numWords <1:
+		continue
 	numReplacedWords = int(max(1,0.15*numWords))
 	printd("Num replaced words: {}".format(numReplacedWords))
 	replaceIndexes = []
