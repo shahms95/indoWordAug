@@ -2,7 +2,7 @@ from nltk.corpus import wordnet as wn
 from random import randint
 
 
-debug = False
+debug = True
 def printd(lines):
 	if debug:
 		print(lines)
@@ -19,15 +19,16 @@ with open(inputFile,'r') as f:
 counter = 5
 linecount = 0
 for inputLine in lines:
-	if (debug and counter<0):
-		break
-	counter = counter - 1
+	# if (debug and counter<0):
+	# 	break
+	# counter = counter - 1
 	outputFile.write(str(linecount) + "::" + inputLine)
 	words = inputLine.split()
 	numWords = len(words)
 	numReplacedWords = int(max(1,0.15*numWords))
 	printd("Num replaced words: {}".format(numReplacedWords))
 	replaceIndexes = []
+	printd("Line number: {}".format(linecount))
 	for x in range(numReplacedWords):
 		replaceIndexes.append(randint(0,numWords-1))
 
