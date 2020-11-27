@@ -37,8 +37,8 @@ public class Examples {
 
 		Random rand = new Random();
 		try {
-			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/dev_test/dev.hi"), "UTF8"));
-			myWriter = new FileWriter("../hi-en/dev_test/dev-SR-aug.hi");
+			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/parallel/IITB.en-hi.hi"), "UTF8"));
+			myWriter = new FileWriter("../hi-en/parallel/IITB-SR-aug.en-hi.hi");
 		} catch( FileNotFoundException e){
 			System.err.println("Error opening input words file.");
 			System.exit(-1);
