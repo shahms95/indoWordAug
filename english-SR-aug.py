@@ -19,7 +19,7 @@ with open(inputFile,'r') as f:
 counter = 5
 linecount = 0
 for inputLine in lines:
-	if debug && counter<0:
+	if (debug and counter<0):
 		break
 	counter = counter - 1
 	outputFile.write(str(linecount) + "::" + inputLine)
