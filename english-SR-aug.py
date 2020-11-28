@@ -18,13 +18,20 @@ with open(inputFile,'r') as f:
 
 counter = 5
 linecount = 0
+validPOS = []
+# validPOS.append(wn.NOUN)
+validPOS.append(wn.VERB)
+validPOS.append(wn.ADV)
+validPOS.append(wn.ADJ)
+
+numWordsLimit = 4
 for inputLine in lines:
 	# if (debug and counter<0):
 	# 	break
 	# counter = counter - 1
 	words = inputLine.split()
 	numWords = len(words)
-	if numWords <1:
+	if numWords <numWordsLimit:
 		continue
 
 	outputFile.write(str(linecount) + "::" + inputLine)
@@ -38,21 +45,20 @@ for inputLine in lines:
 	for replaceIndex in replaceIndexes:
 		originalWord = words[replaceIndex]
 		printd("Word: {} at index: {}".format(originalWord, replaceIndex))
-		synset = set()
-		for s in wn.synsets(originalWord):
-			for l in s.lemmas():
-				synset.add(l.name())
-
-		printd("Size of synset: {}".format(len(synset)))
-		synsetLimit = 3
-		for synsetWord in synset:
-			if(synsetLimit<0):
-				break
-			synsetLimit = synsetLimit - 1
-			words[replaceIndex] = synsetWord
-			changedLine = str(linecount) + "::" + " ".join(words) + '\n'
-			printd("Changed line: {}".format(changedLine))
-			outputFile.write(changedLine)
+		# synset = set()
+		for pos in validPOS:		
+			for s in wn.synsets(originalWord, pos = pos):
+				synsetLimit = 3
+				for l in s.lemmas():
+					# synset.add(l.name())
+					synsetWord = l.name()
+					if(synsetLimit<1):
+						break
+					synsetLimit = synsetLimit - 1
+					words[replaceIndex] = synsetWord
+					changedLine = str(linecount) + "::" + " ".join(words) + '\n'
+					printd("Changed line: {}".format(changedLine))
+					outputFile.write(changedLine)
 
 		words[replaceIndex] = originalWord
 	linecount = linecount+1

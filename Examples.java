@@ -30,7 +30,7 @@ public class Examples {
 		BufferedReader inputWordsFile = null;
 		FileWriter myWriter = null;
 		ArrayList<String> validPOS = new ArrayList();
-		validPOS.add("NOUN");
+		// validPOS.add("NOUN");
 		validPOS.add("VERB");
 		validPOS.add("ADVERB");
 		validPOS.add("ADJECTIVE");
@@ -54,16 +54,17 @@ public class Examples {
 		long[] synsetOffsets;
 		// int counter = 5;
 		int lineCount = 0;
+		int numWordsLimit = 4;
 		try {
 			while( ((inputLine = inputWordsFile.readLine()) != null)){
 				// System.out.println("\n" + inputLine);
 				String[] words = inputLine.split("\\s+");
 				//	 Look up the word for all POS tags
 				int numWords = words.length;
-				if(numWords<1){
+				if(numWords< numWordsLimit){
 					continue;
 				}
-				
+
 				myWriter.write(String.valueOf(lineCount)+"::"+inputLine+'\n');
 				int numReplacedWords = (int)Math.max(1.0, 0.15*numWords);
 				// System.out.println("Number of replaced words: " + String.valueOf(numReplacedWords));
