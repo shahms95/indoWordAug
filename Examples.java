@@ -101,9 +101,9 @@ public class Examples {
 									myWriter.write(changedLine+'\n');
 								}
 							}
-							else{
-								System.out.println("Invalid POS");
-							}
+							// else{
+							// 	System.out.println("Invalid POS");
+							// }
 
 							// System.out.println("SynsetPOS [" + k +"] "+ synsetArray[k].getPOS());
 						}							
