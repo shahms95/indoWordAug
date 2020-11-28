@@ -57,6 +57,7 @@ public class Examples {
 		int numWordsLimit = 4;
 		try {
 			while( ((inputLine = inputWordsFile.readLine()) != null)){
+				lineCount++;	
 				// System.out.println("\n" + inputLine);
 				String[] words = inputLine.split("\\s+");
 				//	 Look up the word for all POS tags
@@ -111,7 +112,6 @@ public class Examples {
 					words[replaceIndex] = originalWord;
 				}
 				// counter--;
-				lineCount++;	
 			}
 				
 		} catch (IOException e) {

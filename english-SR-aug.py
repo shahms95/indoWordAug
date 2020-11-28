@@ -26,6 +26,7 @@ validPOS.append(wn.ADJ)
 
 numWordsLimit = 4
 for inputLine in lines:
+	linecount = linecount+1
 	# if (debug and counter<0):
 	# 	break
 	# counter = counter - 1
@@ -61,5 +62,4 @@ for inputLine in lines:
 					outputFile.write(changedLine)
 
 		words[replaceIndex] = originalWord
-	linecount = linecount+1
 outputFile.close()
