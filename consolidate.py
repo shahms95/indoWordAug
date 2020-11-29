@@ -33,7 +33,7 @@ while(True):
 		enOutFile.write(enLine)
 		hiIdx, hiLine = nextLine(hiInFile)
 		enIdx, enLine = nextLine(enInFile)
-	elif hiIdx < enIdx:
+	elif hiIdx > enIdx:
 		enIdx, enLine = nextLine(enInFile)
 	else:
 		hiIdx, hiLine = nextLine(hiInFile)
