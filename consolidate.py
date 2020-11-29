@@ -18,14 +18,14 @@ def nextLine(inputFile):
 hiIdx, hiLine = nextLine(hiInFile)
 enIdx, enLine = nextLine(enInFile)
 
-linecounter = 0
+itercounter = 0
 
 while(True):
-	if linecounter == 10000:
+	if itercounter%10000==0:
 		hiOutFile.flush()
 		enOutFile.flush()
-		linecounter = 0
-	linecounter = linecounter + 1
+		print(itercounter)
+	itercounter = itercounter + 1
 	if hiIdx== -1 or enIdx == -1:
 		break
 	if hiIdx == enIdx:
@@ -38,6 +38,8 @@ while(True):
 	else:
 		hiIdx, hiLine = nextLine(hiInFile)
 	
+print("Stopped after {} iterations".format(itercounter))
+print("Hindi index: {}; Eng index: {}".format(hiIdx, enIdx))
 
 hiOutFile.close()
 enOutFile.close()
