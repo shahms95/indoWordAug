@@ -1,29 +1,45 @@
-hiFile = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.hi"
-enFile = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.en"
+hiInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.hi", 'r')
+enInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.en", 'r')
 
 hiOutFile = open("../hi-en/parallel/IITB-SR-aug-con.en-hi.100k.hi",'w')
 enOutFile = open("../hi-en/parallel/IITB-SR-aug-con.en-hi.100k.en",'w')
 
-with open(hiFile,'r') as f:
-	hiLines = f.readlines()
-with open(enFile,'r') as f:
-	enLines = f.readlines()
 
-hiIndex, enIndex = 0, 0
+def nextLine(inputFile):
+	line = inputFile.readline()
+	if line == '':
+		return -1, ''
+	line = line.split("::")
+	idx = int(line[0])
+	line = line[1]
+	return idx, line
 
-while(hiIndex < len(hiLines) and enIndex < len(enLines)):
-	hiLine, enLine = hiLines[hiIndex].split("::"), enLines[enIndex].split("::")
-	hiln = int(hiLine[0])
-	enln = int(enLine[0])
-	if( hiln == enln ):
-		hiOutFile.write(hiLine[1])
-		enOutFile.write(enLine[1])
-		hiIndex = hiIndex + 1
-		enIndex = enIndex + 1
-	elif( hiln < enln):
-		hiln = hiln + 1
+
+hiIdx, hiLine = nextLine(hiInFile)
+enIdx, enLine = nextLine(enInFile)
+
+linecounter = 0
+
+while(True):
+	if linecounter == 10000:
+		hiOutFile.flush()
+		enOutFile.flush()
+		linecounter = 0
+	linecounter = linecounter + 1
+	if hiIdx== -1 or enIdx == -1:
+		break
+	if hiIdx == enIdx:
+		hiOutFile.write(hiLine)
+		enOutFile.write(enLine)
+		hiIdx, hiLine = nextLine(hiInFile)
+		enIdx, enLine = nextLine(enInFile)
+	elif hiIdx < enIdx:
+		enIdx, enLine = nextLine(enInFile)
 	else:
-		enln = enln + 1 
+		hiIdx, hiLine = nextLine(hiInFile)
+	
 
 hiOutFile.close()
 enOutFile.close()
+hiInFile.close()
+enInFile.close()
