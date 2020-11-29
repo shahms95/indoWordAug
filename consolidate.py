@@ -1,5 +1,5 @@
-hiInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.hi", 'r')
-enInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.en", 'r')
+hiInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.hi", 'r', encoding='utf-8', errors='ignore')
+enInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.en", 'r', encoding='utf-8', errors='ignore')
 
 hiOutFile = open("../hi-en/parallel/IITB-SR-aug-con.en-hi.100k.hi",'w')
 enOutFile = open("../hi-en/parallel/IITB-SR-aug-con.en-hi.100k.en",'w')
