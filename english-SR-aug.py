@@ -9,10 +9,10 @@ def printd(lines):
 
 
 # use relative path to the 'source' datafile you're reading from
-inputFile = "../hi-en/parallel/500k/IITB.en-hi.500k.en"
+inputFile = "../hi-en/parallel/1M/IITB.en-hi.1M.en"
 
 # use relative path to the 'target' datafile you're writing to (this will be created)
-outputFileName = "../hi-en/parallel/500k/IITB-SR-aug.en-hi.500k.en"
+outputFileName = "../hi-en/parallel/1M/IITB-SR-aug.en-hi.1M.en"
 
 outputFile = open(outputFileName, 'w')
 
