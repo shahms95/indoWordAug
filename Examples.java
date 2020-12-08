@@ -38,7 +38,7 @@ public class Examples {
 		Random rand = new Random();
 		try {
 			//use relative path to the 'source' datafile you're reading from
-			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/parallel/500k/IITB.en-hi.500k.hi"), "UTF8"));
+			inputWordsFile = new BufferedReader(new InputStreamReader (new FileInputStream ("../hi-en/parallel/IITB.en-hi.100k.hi"), "UTF8"));
 			//use relative path to the 'target' datafile you're writing to (this will be created)
 			myWriter = new FileWriter("../hi-en/parallel/500k/IITB-SR-aug.en-hi.500k.hi");
 		} catch( FileNotFoundException e){
