@@ -7,10 +7,13 @@ def printd(lines):
 	if debug:
 		print(lines)
 
-inputFile = "../hi-en/parallel/IITB.en-hi.100k.en"
-outputFileName = "../hi-en/parallel/IITB-SR-aug.en-hi.100k.en"
-# inputFile = "../hi-en/dev_test/dev.en"
-# outputFileName = "../hi-en/dev_test/dev-SR-aug.en"
+
+# use relative path to the 'source' datafile you're reading from
+inputFile = "../hi-en/parallel/500k/IITB.en-hi.500k.en"
+
+# use relative path to the 'target' datafile you're writing to (this will be created)
+outputFileName = "../hi-en/parallel/500k/IITB-SR-aug.en-hi.500k.en"
+
 outputFile = open(outputFileName, 'w')
 
 with open(inputFile,'r') as f:

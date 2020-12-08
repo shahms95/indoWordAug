@@ -1,8 +1,8 @@
-hiInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.hi", 'r', encoding='utf-8', errors='ignore')
-enInFile = open("../hi-en/parallel/IITB-SR-aug.en-hi.100k.en", 'r', encoding='utf-8', errors='ignore')
+hiInFile = open("../hi-en/parallel/500k/IITB-SR-aug.en-hi.500k.hi", 'r', encoding='utf-8', errors='ignore')
+enInFile = open("../hi-en/parallel/500k/IITB-SR-aug.en-hi.500k.en", 'r', encoding='utf-8', errors='ignore')
 
-hiOutFile = open("../hi-en/parallel/IITB-SR-aug-con.en-hi.100k.hi",'w')
-enOutFile = open("../hi-en/parallel/IITB-SR-aug-con.en-hi.100k.en",'w')
+hiOutFile = open("../hi-en/parallel/500k/IITB-SR-aug-con.en-hi.500k.hi",'w')
+enOutFile = open("../hi-en/parallel/500k/IITB-SR-aug-con.en-hi.500k.en",'w')
 
 
 def nextLine(inputFile):
